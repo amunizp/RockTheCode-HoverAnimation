@@ -54,7 +54,7 @@ porque esta en un overflow  */
 /* el hover tiene que pasar sobre ya sea el contenedor 
 o por encima de la tarjeta que va a quedar debajo. 
 porque la tarjeta que se mueve no esta */
-.moving:hover {
+.background:hover ~ .moving {
   transform: scale(1.1);
   animation-name: sube;
   animation-timing-function: ease;
