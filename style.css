@@ -25,33 +25,49 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   gap: 2%;
+  overflow: hidden;
 }
 /* las does cajas son el mismo tamaño */
+/* uso grid para poner una encima de la otra */
 .box {
   width: 300px;
   height: 300px;
-  background-color: yellow;
   grid-row: 1;
   grid-column: 1;
 }
+/* la tarjeta de atras no hace nada le doy color para distinguirla */
+/* por si acaso le doy un index de 0 para que quede debajo */
+.background {
+  z-index: 0;
+  background-color: yellow;
+}
 /* al principo el que se mueve esta escondida
 porque esta en un overflow  */
+/* esta por encima de la otra z index mas alto */
 .moving {
+  z-index: 2;
   background: grey;
-  animation-duration: 2s;
-  overflow: hidden;
   transform: translateY(300px);
+  animation-duration: 5s;
+  animation-iteration-count: 1;
 }
-/* el hover tiene que pasar sobre el dive que background */
+/* el hover tiene que pasar sobre ya sea el contenedor 
+o por encima de la tarjeta que va a quedar debajo. 
+porque la tarjeta que se mueve no esta */
 .moving:hover {
-  animation-name: cubre;
+  transform: scale(1.1);
+  animation-name: sube;
+  animation-timing-function: ease;
 }
 /* igual esta todo aqui. el bounce on hoover. https://blog.hubspot.com/website/css-hover-animation */
-@keyframes cubre {
+@keyframes sube {
   0% {
-    transform: translateY(0);
+    transform: translateY(300px);
+  }
+  50% {
+    transform: translateY(150px);
   }
   100% {
-    transform: translateY(-600px);
+    transform: translateY(0px);
   }
 }
